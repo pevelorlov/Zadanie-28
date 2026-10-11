@@ -367,7 +367,7 @@ def update_sticky_facts(conversation: dict[str, Any], agent: Agent, user_text: s
         parsed = json.loads(result.content)
         raw_facts = parsed.get("facts") if isinstance(parsed, dict) else None
         if not isinstance(raw_facts, list):
-            raise ValueError("DeepSeek не вернул массив facts.")
+            raise ValueError("Модель не вернула массив facts.")
         locked = {item["key"]: item for item in stage_items if item.get("locked") and item.get("key")}
         updated: list[dict[str, Any]] = list(locked.values())
         used_keys = set(locked)
